@@ -18,8 +18,7 @@ namespace ConsoleApp3
             Text text = new Text();
 
             int score = 0;
-
-            
+            bool pause = false;
             
 			gameInterface.Draw();
             
@@ -70,9 +69,14 @@ namespace ConsoleApp3
                     {
                         block.Rotate();
                     }
+                    else if (key.Key == ConsoleKey.P)
+                    {
+                        pause = !pause;
+                    }
+
                 }
                 currentTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-                if (currentTime - prTime >= timeInterval)
+                if (currentTime - prTime >= timeInterval && !pause)
                 {
                     block.moveDown();
                     prTime = currentTime;

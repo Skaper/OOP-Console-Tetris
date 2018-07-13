@@ -61,6 +61,11 @@ namespace ConsoleApp3
             new Text(17, 7, "SCORE").Draw();
             new Text(18, 9, "0").Draw();
             new Text(14, 1, "NEXT FIGURE").Draw();
+            new Text(14, 12, "P - Pause/Easy mode").Draw();
+            new Text(14, 13, "Spacebar - Rotate").Draw();
+            new Text(14, 14, "L_ARROW - Move left").Draw();
+            new Text(14, 15, "R_ARROW - Move right").Draw();
+            new Text(14, 16, "D_ARROW - Move down").Draw();
         }
 	}
 }
