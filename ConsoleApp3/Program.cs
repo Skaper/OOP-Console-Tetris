@@ -9,7 +9,7 @@ namespace ConsoleApp3
 {
 	class Program
 	{
-        
+        Block block;
         static void Main(string[] args)
 		{
             List<Point> allPoints = new List<Point>();
@@ -28,10 +28,14 @@ namespace ConsoleApp3
 
             Figure nextFigure = new Figure(nextFigureNum);
 
-            Block block = new Block(allPoints, currentFigureNum);           
+            Block block = new Block(allPoints, currentFigureNum);
+
+            long currentTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+            long prTime = currentTime;
+            long timeInterval = 450;
 
             //Game
-			while (!block.isGameOver())
+            while (!block.isGameOver())
 			{
                 if (block.check())
                 {
@@ -67,9 +71,14 @@ namespace ConsoleApp3
                         block.Rotate();
                     }
                 }
-                
-				Console.SetCursorPosition(13,12);
-				Thread.Sleep(33);
+                currentTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                if (currentTime - prTime >= timeInterval)
+                {
+                    block.moveDown();
+                    prTime = currentTime;
+                }
+
+                Console.SetCursorPosition(13,12);
 			}
 
             //Game OVER
